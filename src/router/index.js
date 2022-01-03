@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+// import VueRouter from 'vue-router';
+import VueRouter from '../vue-router/index';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 // 子路由
@@ -48,7 +49,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes,
 });
