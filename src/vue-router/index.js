@@ -25,6 +25,20 @@ class VueRouter {
     }
   }
 
+  // 定义初始化路由方法
+  init(app) {
+    this.app = app;
+    const history = this.history;
+
+    // 路由变化监听函数
+    const setupListeners = () => {
+      history.setupListeners();
+    };
+
+    // 初始化时 首先根据当前页面路径渲染一次页面
+    history.transitionTo(history.getCurrentLocation(), setupListeners);
+  }
+
   // 注册多个路由
   addRoutes(routes) {
     this.matcher.addRoutes(routes);
