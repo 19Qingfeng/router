@@ -54,9 +54,14 @@ export class BaseHistory {
     onComplete && onComplete(route);
   }
 
+  // current改变同步修改$route
+  listen(cb) {
+    this.cb = cb;
+  }
+
   // 更新current的值
   updateRoute(route) {
     this.current = route;
-    console.log('更新后的 current', this.current);
+    this.cb && this.cb(route);
   }
 }

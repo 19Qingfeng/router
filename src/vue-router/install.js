@@ -1,5 +1,5 @@
-// import Link from './components/link';
-// import View from './components/view';
+import Link from './components/link';
+import View from './components/view';
 
 let _Vue;
 
@@ -33,8 +33,8 @@ export default function install(Vue) {
   // 调用 router.init 方法根据Url初始化路由页面
 
   // 注册组件
-  // Vue.component('router-link', Link);
-  // Vue.component('router-view', View);
+  Vue.component('router-link', Link);
+  Vue.component('router-view', View);
 
   // 定义原型$router对象
   Object.defineProperty(Vue.prototype, '$router', {
@@ -44,10 +44,9 @@ export default function install(Vue) {
   });
 
   // 定义原型$route对象
-  // to do ...
   Object.defineProperty(Vue.prototype, '$route', {
     get() {
-      return {};
+      return this._rootRouter._route;
     },
   });
 }

@@ -1,7 +1,6 @@
 import { createMatcher } from './crate-matcher';
 import { HashHistory } from './history/hash';
 import { HTML5History } from './history/html5';
-
 import install from './install';
 
 class VueRouter {
@@ -37,6 +36,21 @@ class VueRouter {
 
     // 初始化时 首先根据当前页面路径渲染一次页面
     history.transitionTo(history.getCurrentLocation(), setupListeners);
+
+    // 初始化完成之后
+    history.listen((route) => {
+      app._route = route;
+    });
+  }
+
+  // 跳转
+  push(location) {
+    this.history.push(location);
+  }
+
+  // 替换
+  replace(location) {
+    this.history.replace(location);
   }
 
   // 注册多个路由
